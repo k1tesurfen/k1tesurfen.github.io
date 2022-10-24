@@ -2451,8 +2451,8 @@ input, select, textarea {
 	/* Full width */
 	height: 100%;
 	/* Full height */
-	overflow: auto;
 	/* Enable scroll if needed */
+	overflow: auto;
 	background-color: rgb(0, 0, 0);
 	/* Fallback color */
 	background-color: rgba(0, 0, 0, 0.9);
@@ -2462,8 +2462,8 @@ input, select, textarea {
 	.modal-content {
 	margin: auto;
 	display: block;
-	width: 80%;
 	max-width: 1000px;
+	max-height: 800px;
 	}
 
 	#caption {
