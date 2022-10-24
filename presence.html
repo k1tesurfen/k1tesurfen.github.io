@@ -92,7 +92,7 @@
 									</section>
 									<section class="spacer5"></section>
 									<section>
-										<h3 class="major">The Black Hole</h3>
+										<h3 class="major">How to create a black hole &mdash; Or you can <a class="button primary" style="margin-left: 10px; margin-right: 10px;" href="#questionnaires">skip</a> the math!</h3>
 										<p>If you're interested in how the black hole is attracting its objects, here we go: Unity 3D itself has gravity and force built into its engine. So if you throw objects they behave more or less the same as in real life. So the actual attraction is left to implement.</p>
 										<p>For the attraction of the magical black hole and the thrown object I used three different stages with different methods of attraction. The basic method was Isaac Newton's <a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation">Law of Universal Gravitation.</a> The force F of two objects attracting each other can be calculated by \[F=G\cdot \frac{m_{1}\cdot m_{2}}{r^2}\] The problem with this equation is, that the fraction will strive towards infinity due to \(r^2\) (distance between the attracting objects squared) approaching zero. So the closer the two objects get to each other, the higher the attracting force will get. This leads to a huge problem with Unity. The speed of the thrown object is so fast that it basically flies through the target. It is only registered shortly before impact and then way behind the supposed impact. It completely misses the invisible bounding box of the target that usually listens for collisions.</p>
 										<blockquote>So how can we prevent creating new galaxies?</blockquote>
@@ -150,8 +150,10 @@ void Attract(Attractor objToAttract)
 
 									</section>
 
-									<section style="margin-top: 2em;">
-										<h3 class="major">All in one study</h3>
+									<section class="spacer5"></section>
+
+									<section id="questionnaires">
+										<h3 class="major" >All in one study</h3>
 										<div class="box alt">
 											<div class="row gtr-uniform">
 												<div class="col-4"><span class="image fit showgrad"><img src="images/questionnaire3.png" alt="" /></span></div>
