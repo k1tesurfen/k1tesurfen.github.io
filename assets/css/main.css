@@ -2512,6 +2512,36 @@ input, select, textarea {
   		}
 	}
 
+	#container{
+	margin: 0 auto;
+	padding: 3em 0 1em 0;
+	height: 800px;
+	width: 80%;
+	display: flex;
+	}
+	.split{
+	display: inline-block;
+	width: 50%;
+	height: 100%;
+	}
+	.scrollview{
+	max-height: 90%;
+	width: 100%;
+	overflow-y: scroll;
+	}
+	.scrollview > img{
+	width: 100%;
+	height: 100%;
+	}
+	
+	.left{
+	float: right;
+	margin-right: 10px;
+	}
+	.right{
+	float: left;
+	margin-left: 10px;
+	}
 	#kite{
 		display: inline-block;
 		max-width: 97%;
