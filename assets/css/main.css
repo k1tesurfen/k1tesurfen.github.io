@@ -33,6 +33,15 @@ section, summary, time, mark, audio, video {
 	margin-bottom: 5em;
 }
 
+.spacer2{
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+.spacertop2{
+	margin-top: 5em;
+}
+
 .spacerbot5{
 	margin-bottom: 5em;
 }
