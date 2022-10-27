@@ -44,6 +44,36 @@ section, summary, time, mark, audio, video {
 	z-index: 99;
 }
 
+Iframe {
+width: 100%;
+height:auto;
+}
+
+.video-section{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.video-container{
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -145,7 +175,7 @@ input, select, textarea {
 	body, input, select, textarea {
 		color: #ffffff;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
-		font-size: 16.5pt;
+		font-size: 15.5pt;
 		font-weight: 300;
 		line-height: 1.65;
 	}
@@ -2542,6 +2572,9 @@ input, select, textarea {
 	width: 50%;
 	height: 100%;
 	}
+	.split p, .split h3{
+		text-align: center;
+	}
 	.scrollview{
 	max-height: 90%;
 	width: 100%;
@@ -2558,7 +2591,6 @@ input, select, textarea {
 	margin-right: 10px;
 	}
 	.right{
-	float: left;
 	margin-left: 10px;
 	}
 
