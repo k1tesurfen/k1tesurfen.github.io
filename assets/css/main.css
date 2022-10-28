@@ -33,6 +33,11 @@ section, summary, time, mark, audio, video {
 	margin-bottom: 5em;
 }
 
+.spacer10{
+	margin-top: 10em;
+	margin-bottom: 10em;
+}
+
 .spacer2{
 	margin-top: 2em;
 	margin-bottom: 2em;
@@ -94,6 +99,11 @@ body {
 
 ol, ul {
 	list-style: none;
+}
+
+.nobullets{
+	list-style-type: none;
+	margin-bottom: 0;
 }
 
 blockquote, q {
@@ -2469,6 +2479,74 @@ input, select, textarea {
 		}
 
 /* Image */
+	
+	.flex-container{
+		display: flex;
+		align-items: center;
+		width: 70%;
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom: 6em;
+	}
+	
+	.flex-container > .dividor{
+		height: auto;
+		margin: 0.5em 1em 0.5em 1em; 
+		border-left: 2px solid lightgray;
+	}
+
+	.flex-container p{
+		text-align: center;
+	}
+
+	.flex-image{
+		margin-left: 1em;
+		margin-right: 1em;
+	}
+
+	.lenses{
+		width:80%;
+	}
+
+	.lenses img{
+		width:300px;
+	}
+
+	.flex-image img{
+		width: 350px;
+	}
+
+	.flex-container > .text{
+		width: 35%;
+	}
+	
+	.flex-container h3{
+		padding-left: 1.6em;
+	}
+
+	.flex-container:nth-of-type(even) {
+	flex-direction: row-reverse;
+	}
+
+	.camcon{
+		display: block;
+		width: 100%;
+	}
+
+	.camera.right{
+		width: 60%;
+		float: right;
+		margin-right: 10%;
+	}
+	.camera.left{
+		width: 60%;
+		float: left;
+		margin-left: 10%;
+	}
+
+	#tobecontinued a{
+		height: 30px;
+	}
 
 	#zoom {
 		pointer-events: none;
@@ -2519,7 +2597,7 @@ input, select, textarea {
 	.modal-content {
 	margin: auto;
 	display: block;
-	max-width: 1000px;
+	max-width: 1400px;
 	max-height: 800px;
 	}
 
@@ -2537,7 +2615,7 @@ input, select, textarea {
 	.modal-content,
 	#caption {
 	animation-name: zoom;
-	animation-duration: 0.6s;
+	animation-duration: 0.3s;
 	}
 
 	@keyframes zoom {
@@ -2553,7 +2631,7 @@ input, select, textarea {
 	float: right;
 	color: #f1f1f1;
 	font-weight: bold;
-	transition: 0.3s;
+	transition: 0.2s;
 	}
 
 	.close:hover,
@@ -2595,11 +2673,11 @@ input, select, textarea {
 	border-radius: 10px;
 	}
 	
-	.left{
+	.scrollview.left{
 	float: right;
 	margin-right: 10px;
 	}
-	.right{
+	.scrollview.right{
 	margin-left: 10px;
 	}
 
@@ -2851,6 +2929,14 @@ input, select, textarea {
 		overflow: hidden;
 		text-align: center;
 	}
+	div.tobecontinued{
+		overflow: hidden;
+		text-align: center;
+	}
+	.tobecontinued > ul{
+		height:20px;
+	}
+
 	ul img{
 		vertical-align: middle;
 		height:2.5em;
@@ -2879,6 +2965,9 @@ input, select, textarea {
 			}
 			div.tech li .icon:before {
 				font-size: 2em;
+			}
+			div.tobecontinued li .icon:before {
+				font-size: 0.6em;
 			}
 			div.tech a{
 				vertical-align: middle;
