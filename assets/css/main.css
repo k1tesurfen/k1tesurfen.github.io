@@ -60,7 +60,23 @@ section, summary, time, mark, audio, video {
 
 Iframe {
 width: 100%;
-height:auto;
+}
+
+.icontainer{
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	padding-top: 56.25%;
+}
+
+.responsive{
+	position:absolute;
+	top:0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .video-section{
@@ -317,6 +333,23 @@ input, select, textarea {
 
 	p {
 		margin: 0 0 2em 0;
+	}
+
+	.party{
+		font-weight: 700;
+		text-shadow: 0 0 15px lightblue, 0 0 50px lightblue;
+		color:lightblue;
+		animation: animate 3s linear infinite;
+	}
+
+	@keyframes animate {
+		0%{
+			filter:hue-rotate(0deg);
+		}
+		100%{
+			filter:hue-rotate(360deg);
+		}
+		
 	}
 
 	h1, h2, h3, h4, h5, h6 {
