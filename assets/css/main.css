@@ -28,6 +28,24 @@ section, summary, time, mark, audio, video {
 	scroll-padding-top: 90px;
 }
 
+.back{
+	display: flex;
+	height: 100%;
+	width: 50%;
+}
+.back > a{
+	display: flex;
+	align-items: center;
+	height: 100%;
+	margin-right: 0.5em;
+	text-decoration: none;
+	border-bottom: none;
+}
+.back a > img{
+	height: 50%;
+}
+
+
 .spacer5{
 	margin-top: 5em;
 	margin-bottom: 5em;
@@ -106,8 +124,16 @@ width: 100%;
 
 
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, hgroup, menu, section {
 	display: block;}
+
+nav{
+	display: flex;
+}
+
+nav > *{
+	margin-left: 0.5em;
+}
 
 body {
 	line-height: 1;
@@ -473,6 +499,7 @@ input, select, textarea {
 		text-align: right;
 	}
 
+
 /* Row */
 
 	.row {
@@ -481,6 +508,15 @@ input, select, textarea {
 		box-sizing: border-box;
 		align-items: stretch;
 	}
+	
+	.nowrap{
+		flex-wrap: nowrap;
+	}
+
+	.nowrap > .image.fit{
+		width: auto;
+	}
+
 
 		.row > * {
 			box-sizing: border-box;
@@ -2192,6 +2228,14 @@ input, select, textarea {
 		text-align: center;
 	}
 
+	.features img{
+		filter: sepia(30%);
+	}
+	
+	.spotlight img{
+		filter: sepia(30%);
+	}
+
 /* Form */
 
 	form {
@@ -2774,12 +2818,15 @@ input, select, textarea {
 
 			.image.fit > .gallery{
 				width: 100%;
+				height: auto;
 			}
-
-		.image.fit.lion {
-			display: block;
+		
+		.image.fit.lion{
 			margin: 0 0 1em 0;
-			width: 100%;
+		}
+
+		.image.fit.lion img{
+			height: 12em;
 		}
 
 		.image.main {
