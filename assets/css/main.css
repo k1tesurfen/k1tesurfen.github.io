@@ -131,6 +131,10 @@ model-viewer {
   background-color: #ffffff;
 }
 
+:not(:defined) > * {
+  display: none;
+}
+
 
 .progress-bar {
   display: block;
