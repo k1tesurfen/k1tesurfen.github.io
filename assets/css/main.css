@@ -223,10 +223,6 @@ input, select, textarea {
 		background-position: center, center;
 	}
 	
-	.woodworking{
-		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/wood-bg2.jpg");
-	}
-
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 			-moz-animation: none !important;
 			-webkit-animation: none !important;
@@ -237,6 +233,11 @@ input, select, textarea {
 			-ms-transition: none !important;
 			transition: none !important;
 		}
+
+	.woodworking{
+		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/wood-bg2.jpg");
+	}
+
 
 /* Type */
 
@@ -514,6 +515,33 @@ input, select, textarea {
 		flex-wrap: wrap;
 		box-sizing: border-box;
 		align-items: stretch;
+	}
+
+	.row-container{
+		display: flex;
+  		flex-wrap: nowrap;
+  		width: 100%;
+  		margin-left: -1em;
+		margin-bottom: 1em;
+		margin-top: 1em;
+  		align-items: stretch;
+	}
+
+	.row-items{
+		display: block;
+		padding: 0 0 0 1em;
+		justify-content: space-around;
+	}
+
+	.row-items img{
+		width: 100%;
+  		height: auto;
+  		vertical-align: middle;
+		border-radius: 0.3em;
+	}
+
+	.row-wrap{
+		padding: 0 0 0 1em;
 	}
 	
 	.nowrap{
@@ -2617,7 +2645,7 @@ input, select, textarea {
 	}
 
 	.flex-container:nth-of-type(even) {
-	flex-direction: row-reverse;
+		flex-direction: row-reverse;
 	}
 
 	.camcon{
