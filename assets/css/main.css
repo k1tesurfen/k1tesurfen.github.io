@@ -2950,6 +2950,7 @@ input, select, textarea {
 	position: relative;
 	width: 90%;
 	height: 90vh;
+	-webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 3320 2481" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect width="3320" height="2481"/></svg>') center/contain no-repeat;
 	mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 3320 2481" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect width="3320" height="2481"/></svg>') center/contain no-repeat;
 }
 .map-mask img{
