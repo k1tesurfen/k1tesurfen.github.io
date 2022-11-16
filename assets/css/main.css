@@ -33,6 +33,7 @@ section, summary, time, mark, audio, video {
 	height: 100%;
 	width: 50%;
 }
+
 .back > a{
 	display: flex;
 	align-items: center;
@@ -41,6 +42,7 @@ section, summary, time, mark, audio, video {
 	text-decoration: none;
 	border-bottom: none;
 }
+
 .back a > img{
 	height: 50%;
 }
@@ -62,11 +64,23 @@ section, summary, time, mark, audio, video {
 }
 
 .spacertop2{
+	margin-top: 2em;
+}
+.spacertop3{
+	margin-top: 3em;
+}
+.spacertop5{
 	margin-top: 5em;
 }
 
 .spacerbot5{
 	margin-bottom: 5em;
+}
+.spacerbot3{
+	margin-bottom: 3em;
+}
+.spacerbot2{
+	margin-bottom: 2em;
 }
 .totop{
 	position: absolute;
@@ -75,6 +89,57 @@ section, summary, time, mark, audio, video {
 	margin-right: 50px;
 	z-index: 99;
 }
+
+/*Tag list*/
+
+.tags{
+	display: flex;
+	cursor: default;
+	list-style: none;
+	margin-left: -1em;
+	padding-left: 0;
+	margin: 0 0 1.1em 0;
+}
+
+.tags li{
+	padding: 0 0.5em 0 0;
+
+}
+
+.tags a{
+	font-size: 0.6em;
+	background-color: transparent;
+	border: 0;
+	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.125);
+	color: #ffffff !important;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	height: 3.75em;
+	padding: 0 2.25em;
+	white-space: nowrap;
+}
+
+.tags i{
+    background: url("images/wood-icon.png"); 
+	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.525);
+	font-size: 0.6em;
+    height:	3.75em; 
+    width: 3.75em; 
+	background-size: 3.75em;
+	padding: 0;
+    display: block; 
+	cursor: default;
+}
+
+.showcase{
+	margin: 0 0 0.5em 0;
+}
+
+
 
 /*Embedded Videos*/
 Iframe {
@@ -542,6 +607,10 @@ input, select, textarea {
 
 	.row-wrap{
 		padding: 0 0 0 1em;
+	}
+
+	.row-wrap p{
+		margin: 0 0 2.5em 0;
 	}
 	
 	.nowrap{
@@ -2717,8 +2786,8 @@ input, select, textarea {
 	.modal-content {
 	margin: auto;
 	display: block;
-	max-width: 1400px;
-	max-height: 800px;
+	max-width: 95vw;
+	max-height: 90vh;
 	}
 
 	#caption {
@@ -2873,7 +2942,38 @@ input, select, textarea {
 			.image.main img {
 				width: 100%;
 			}
+
 		
+/* SVG */
+
+.map-mask{
+	position: relative;
+	width: 90%;
+	height: 90vh;
+	mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 3320 2481" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect width="3320" height="2481"/></svg>') center/contain no-repeat;
+}
+.map-mask img{
+	position: absolute;
+	display:block;
+	filter: invert(80%);
+	top:10%;
+	left: 50%;
+	transform: translateX(-50%);
+	width:100%;
+	height: auto;
+	animation-name: zoom; 
+	animation-fill-mode: forwards;
+	animation-duration: 1.5s;
+	animation-delay: 2s;
+}
+
+@keyframes zoom {
+	from {width:100%;}
+	to {width:144%; top:-25%;}
+}
+
+
+
 
 /* List */
 

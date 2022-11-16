@@ -1,149 +1,173 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Solid State by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="en" translate="no">
-	<head>
-	<title>Menken - Lionman</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>Menken - Lionman</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="back">
+          <a href="index.html"><img src="assets/css/images/back.svg" /></a>
+          <h1><a title="HOME" href="index.html">Lion man</a></h1>
+        </div>
+        <nav>
+          <a class="button primary" href="lionman.html">ENG</a>
+          <a class="button" href="lionman-ger.html">GER</a>
+          <a class="button" href="#menu">Menu</a>
+        </nav>
+      </header>
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+      <!-- Menu -->
+      <nav id="menu">
+        <div class="inner">
+          <h2>Menu</h2>
+          <ul class="links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+          <a href="#" class="close">Close</a>
+        </div>
+      </nav>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="back"><a href="index.html"><img src="assets/css/images/back.svg"/></a><h1><a title="HOME" href="index.html">Lion man</a></h1></div>
-						<nav>
-							<a class="button primary" href="lionman.html">ENG</a>
-							<a class="button" href="lionman-ger.html">GER</a>
-							<a class="button" href="#menu">Menu</a>
-						</nav>
-					</header>
+      <!-- Wrapper -->
+      <section id="wrapper">
+        <header>
+          <div class="inner">
+            <h2>Lion man Project</h2>
+            <p>Creating a media station for the Ulm Museum</p>
+          </div>
+        </header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
+        <!-- Content -->
+        <div class="wrapper">
+          <div class="inner">
+            <section>
+              <iframe style="width: 800px; height: 450px" src="https://s3-cdn.welocal.cloud/regiotv/media/14143/videos/14143_flash9.mp4"></iframe>
+              <p>
+                Lion man media station in action. The touch table mastered its premiere <br />
+                at the Ulm Museum &mdash; German video by <a href="https://www.regio-tv.de/mediathek/video/geschichte-zum-anfassen-studenten-machen-l%C3%B6wenmenschen-erlebbar/" alt="Full article">regio.tv</a>
+              </p>
+              <h2 class="major">What is this Lion man and why does he have a project?</h2>
+              <blockquote>
+                The largest and most spectacular ivory figure is the Lion Man, a mythical creature depicting animal and human. Fragments of the sculpture had been discovered in the Stadel Cave at the Hohlenstein in the Lone Valley, on the last day of the excavation campaign in
+                1939. The excavations were abandoned because of the beginning of the Second World War. It was not until more than 30 years later that the ivory pieces had been recognized as parts of a sculpture, and it took another two decades before the statuette was
+                professionally restored. &mdash; <a href="http://www.loewenmensch.de/index.html">loewenmensch.de</a>
+              </blockquote>
+              <blockquote>
+                The [lion man] media station was developed in a joint study project with the Institute for Media Informatics at Ulm University. Not only photos, films and texts can be viewed via a touch table, the lion man interactively reveals his "inner life" in all details in
+                three-dimensional views. In addition, you can take a virtual tour through the Stadel cave or you can go on a journey of discovery through the landscape of the Lone Valley 40,000 years ago, which was shaped by the Ice Age. The station offers all information in
+                German and English language &mdash; <a href="http://www.loewenmensch.de/aktuelles.html">loewenmensch.de/aktuelles</a>
+              </blockquote>
+              <h3 class="major">Challenges and Motivation</h3>
+              <p>
+                <span class="image right cropped"
+                  ><img class="modalimage" src="https://www.uni-ulm.de/fileadmin/_processed_/9/a/csm_Pressefoto-2_Medienstation-Lowenmensch_Museum-Ulm_3193c86dd6.jpg" alt="" /><a
+                    href="https://www.uni-ulm.de/in/fakultaet/in-detailseiten/news-detail/article/studierende-entwickeln-medienstation-den-loewenmenschen-virtuell-begreifen/"
+                    >Photo uni-ulm.de</a
+                  ></span
+                >The lion man media station is based on the inviwo.org framework also developed at Ulm University in cooperation with Linköping University. This framework was originally intended to visualize scientific data like point clouds or medical imaging information. One
+                big challenge was to melt this framework into a robust and informative touch UI. The screen is split into a three dimensional area on the right and an info panel on the left. Points of interest in the 3D view funcion as buttons that show extra information on the
+                info panel. The history of the lion man is presented by short videos, descriptions and images. To adapt to different user types with different capabilities, the font-size and language can be adapted. Touch buttons were over sized to easily hit them.
+              </p>
+              <p>Some Challenges:</p>
+              <ul>
+                <li>Thick touch layer created translation in visual image. Test users sometimes touched lower than button touch area. This phenomenon can also be seen at ATMs or ticket machines.</li>
+                <li>What if a user leaves the table in a messy state. Weird 3D view angles or videos paused on a black screen. New visitors will get confused and can't explore the media station as intended.</li>
+                <li>The system has to start up and work from scratch without the help of any professional. There shouldn't be any extra training necessary to set up the media station every opening morning.</li>
+                <li>This machine will not widthstand any serious penetration test, but it is secure enough for the user not to stumble outside the intended application.</li>
+              </ul>
 
-				<!-- Wrapper -->
-					<section id="wrapper">
-						<header>
-							<div class="inner">
-								<h2>Lion man Project</h2>
-								<p>Creating a media station for the Ulm Museum</p>
-							</div>
-						</header>
+              <h3 class="major">Impressions from the exhibition at the Ulm Museum</h3>
+              <div class="box alt">
+                <div class="row gtr-uniform">
+                  <div class="col-4">
+                    <span class="image fit lion"
+                      ><a href="http://www.loewenmensch.de/aktuelles.html"><img class="gallery" src="http://www.loewenmensch.de/images/medienstation.jpg" alt="loewenmensch.de - Last accessed 10/24/22" /></a
+                    ></span>
+                    <p>
+                      Different viewing modes let the user see inside the lion man. Users can put a crossection at any location into the lion man. Predefined crossections let the user see the most interesting parts in no time. Image from
+                      <a href="http://www.loewenmensch.de/aktuelles.html">loewenmensch.de</a>, where you can also find the whole background story to the finding and further excavation of the lion man.
+                    </p>
+                  </div>
+                  <div class="col-4">
+                    <span class="image fit lion"
+                      ><a href="https://www.augsburger-allgemeine.de/neu-ulm/Ulm-Loewenmensch-zum-Anfassen-id50975576.html"
+                        ><img class="gallery" src="https://www.augsburger-allgemeine.de/img/neu-ulm/crop50975571/177942606-cv16_9-w940-owebp/Copy-20of-20D4S-4632?t=.jpg" alt="augsburger-allgemeine.de - Last accessed 10/24/22" /></a
+                    ></span>
+                    <p>German State Secretary Petra Olschowski (right) and German Parliamentarian Martin Rivoir test the media station &mdash; <a href="https://www.augsburger-allgemeine.de/neu-ulm/Ulm-Loewenmensch-zum-Anfassen-id50975576.html">augsburger-allgemeine.de</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="spacer5"></div>
+            </section>
+          </div>
 
-						<!-- Content -->
-							<div class="wrapper">
-								<div class="inner">
+          <!--Modal to enlarge images-->
+          <div id="myModal" class="modal close">
+            <div>
+              <img class="modal-content" id="img01" />
+              <div id="caption"><p></p></div>
+            </div>
+          </div>
 
-									<section>
-										<iframe style="width:800px; height:450px;" src="https://s3-cdn.welocal.cloud/regiotv/media/14143/videos/14143_flash9.mp4"></iframe>
-										<p>Lion man media station in action. The touch table mastered its premiere <br> at the Ulm Museum &mdash; German video by <a href="https://www.regio-tv.de/mediathek/video/geschichte-zum-anfassen-studenten-machen-l%C3%B6wenmenschen-erlebbar/" alt="Full article">regio.tv</a></p>
-										<h2 class="major">What is this Lion man and why does he have a project?</h2>
-										<blockquote>
-											The largest and most spectacular ivory figure is the Lion Man, a mythical creature depicting animal and human. Fragments of the sculpture had been discovered in the Stadel Cave at the Hohlenstein in the Lone Valley, on the last day of the excavation campaign in 1939. The excavations were abandoned because of the beginning of the Second World War. It was not until more than 30 years later that the ivory pieces had been recognized as parts of a sculpture, and it took another two decades before the statuette was professionally restored. &mdash; <a href="http://www.loewenmensch.de/index.html">loewenmensch.de</a>
-										</blockquote>
-										<blockquote>
-											The  [lion man] media station was developed in a joint study project with the Institute for Media Informatics at Ulm University. Not only photos, films and texts can be viewed via a touch table, the lion man interactively reveals his "inner life" in all details in three-dimensional views. In addition, you can take a virtual tour through the Stadel cave or you can go on a journey of discovery through the landscape of the Lone Valley 40,000 years ago, which was shaped by the Ice Age. The station offers all information in German and English language &mdash; <a href="http://www.loewenmensch.de/aktuelles.html">loewenmensch.de/aktuelles</a>
-										</blockquote>
-										<h3 class="major">Challenges and Motivation</h3>
-										<p><span class="image right cropped"><img class="modalimage" src="https://www.uni-ulm.de/fileadmin/_processed_/9/a/csm_Pressefoto-2_Medienstation-Lowenmensch_Museum-Ulm_3193c86dd6.jpg" alt="" /><a href="https://www.uni-ulm.de/in/fakultaet/in-detailseiten/news-detail/article/studierende-entwickeln-medienstation-den-loewenmenschen-virtuell-begreifen/">Photo uni-ulm.de</a></span>The lion man media station is based on the inviwo.org framework also developed at Ulm University in cooperation with Linköping University. This framework was originally intended to visualize scientific data like point clouds or medical imaging information. One big challenge was to melt this framework into a robust and informative touch UI. The screen is split into a three dimensional area on the right and an info panel on the left. Points of interest in the 3D view funcion as buttons that show extra information on the info panel. The history of the lion man is presented by short videos, descriptions and images. To adapt to different user types with different capabilities, the font-size and language can be adapted. Touch buttons were over sized to easily hit them.</p>
-										<p>Some Challenges:</p>
-										<ul>
-											<li>Thick touch layer created translation in visual image. Test users sometimes touched lower than button touch area. This phenomenon can also be seen at ATMs or ticket machines.</li>
-											<li>What if a user leaves the table in a messy state. Weird 3D view angles or videos paused on a black screen. New visitors will get confused and can't explore the media station as intended.</li>
-											<li>The system has to start up and work from scratch without the help of any professional. There shouldn't be any extra training necessary to set up the media station every opening morning.</li>
-											<li>This machine will not widthstand any serious penetration test, but it is secure enough for the user not to stumble outside the intended application.</li>
-										</ul>
+          <button onclick="topFunction()" class="button small totop">Back To Top</button>
+        </div>
+      </section>
 
-										<h3 class="major">Impressions from the exhibition at the Ulm Museum</h3>
-										<div class="box alt">
-											<div class="row gtr-uniform">
-												<div class="col-4"><span class="image fit lion"><a href="http://www.loewenmensch.de/aktuelles.html"><img class="gallery" src="http://www.loewenmensch.de/images/medienstation.jpg" alt="loewenmensch.de - Last accessed 10/24/22"/></a></span><p>Different viewing modes let the user see inside the lion man. Users can put a crossection at any location into the lion man. Predefined crossections let the user see the most interesting parts in no time. Image from <a href="http://www.loewenmensch.de/aktuelles.html">loewenmensch.de</a>, where you can also find the whole background story to the finding and further excavation of the lion man.</p></div>
-												<div class="col-4"><span class="image fit lion"><a href="https://www.augsburger-allgemeine.de/neu-ulm/Ulm-Loewenmensch-zum-Anfassen-id50975576.html"><img class="gallery" src="https://www.augsburger-allgemeine.de/img/neu-ulm/crop50975571/177942606-cv16_9-w940-owebp/Copy-20of-20D4S-4632?t=.jpg" alt="augsburger-allgemeine.de - Last accessed 10/24/22" /></a></span><p>German State Secretary Petra Olschowski (right) and German Parliamentarian Martin Rivoir test the media station &mdash; <a href="https://www.augsburger-allgemeine.de/neu-ulm/Ulm-Loewenmensch-zum-Anfassen-id50975576.html">augsburger-allgemeine.de</a></p></div>
-											</div>
-										</div>
-										<div class="spacer5"></div>
+      <!-- Footer -->
+      <section id="footer">
+        <div class="inner">
+          <h2 class="major">Get in touch</h2>
+          <form method="post" action="#">
+            <div class="fields">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="4"></textarea>
+              </div>
+            </div>
+            <ul class="actions">
+              <li><input type="submit" value="Send Message" /></li>
+            </ul>
+          </form>
+          <ul class="contact">
+            <li class="icon solid fa-home">Stuttgart, Germany</li>
+            <li class="icon solid fa-envelope"><a href="#">kaithmenken@pm.me</a></li>
+            <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/kaith-menken/">linkedin.com/in/kaith-menken</a></li>
+            <li class="icon brands fa-instagram"><a href="http://instagram.com/k1tesurfen">instagram.com/k1tesurfen</a></li>
+          </ul>
+          <ul class="copyright">
+            <li>&copy; Kaith-Uwe Menken All rights reserved.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
 
-									</section>
-								</div>
-
-								<!--Modal to enlarge images-->
-								<div id="myModal" class="modal close">
-									<div>
-										<img class="modal-content" id="img01">
-										<div id="caption"><p></p></div>
-									</div>
-								</div>
-
-								<button onclick="topFunction()" class="button small totop">Back To Top</button>
-							</div>
-
-					</section>
-
-				<!-- Footer -->
-					<section id="footer">
-						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="4"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-							<ul class="contact">
-								<li class="icon solid fa-home">
-									Stuttgart, Germany
-								</li>
-								<li class="icon solid fa-envelope"><a href="#">kaithmenken@pm.me</a></li>
-								<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/kaith-menken/">linkedin.com/in/kaith-menken</a></li>
-								<li class="icon brands fa-instagram"><a href="http://instagram.com/k1tesurfen">instagram.com/k1tesurfen</a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Kaith-Uwe Menken All rights reserved.</li>
-							</ul>
-						</div>
-					</section>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/modal.js"></script>
-
-	</body>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/modal.js"></script>
+  </body>
 </html>
