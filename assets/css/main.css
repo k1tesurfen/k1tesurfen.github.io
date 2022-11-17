@@ -2974,13 +2974,13 @@ input, select, textarea {
 	transform: translateX(-50%);
 	width:100%;
 	height: auto;
-	animation-name: zoom; 
+	animation-name: mapzoom; 
 	animation-fill-mode: forwards;
 	animation-duration: 1.5s;
 	animation-delay: 2s;
 }
 
-@keyframes zoom {
+@keyframes mapzoom{
 	from {width:100%;}
 	to {width:144%; top:-25%;}
 }
