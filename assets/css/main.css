@@ -1322,7 +1322,7 @@ hr.major {
 
 	.row {
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: no-wrap;
 		box-sizing: border-box;
 		align-items: stretch;
 	}
@@ -1567,7 +1567,7 @@ hr.major {
 
 	.row {
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: no-wrap;
 		box-sizing: border-box;
 		align-items: stretch;
 	}
@@ -3158,6 +3158,7 @@ input[type="radio"]+label:before {
 
 .lenses {
 	width: 80%;
+	justify-content: center;
 }
 
 .lenses img {
@@ -3400,6 +3401,15 @@ input[type="radio"]+label:before {
 .image.fit>.gallery {
 	width: 100%;
 	height: auto;
+}
+
+.image.fit>.gallery.single {
+	width: 60%;
+	height: auto;
+}
+
+.image.center {
+	align-content: center;
 }
 
 .image.fit.lion {

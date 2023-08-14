@@ -5,109 +5,206 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="en" translate="no">
-  <head>
-    <title>Menken - ReGraT</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript>
-      <link rel="stylesheet" href="assets/css/noscript.css" />
-    </noscript>
-  </head>
 
-  <body class="is-preload">
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
-      <!-- Header -->
-      <header id="header">
-        <div class="back">
-          <a href="index.html"><img src="assets/css/images/back.svg" /></a>
-          <h1><a title="HOME" href="index.html">REGRAT</a></h1>
+<head>
+  <title>Menken - ReGraT</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css" />
+  </noscript>
+</head>
+
+<body class="is-preload">
+  <!-- Page Wrapper -->
+  <div id="page-wrapper">
+    <!-- Header -->
+    <header id="header">
+      <div class="back">
+        <a href="index.html"><img src="assets/css/images/back.svg" /></a>
+        <h1><a title="HOME" href="index.html">REGRAT</a></h1>
+      </div>
+      <nav>
+        <a class="button primary" href="index.html">ENG</a>
+        <a class="button" href="ger.html">GER</a>
+        <a class="button" href="#menu">Menu</a>
+      </nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+      <div class="inner">
+        <h2>Menu</h2>
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <a href="#" class="close">Close</a>
+      </div>
+    </nav>
+
+    <!-- Wrapper -->
+    <section id="wrapper">
+      <header>
+        <div class="inner">
+          <h2>ReGraT</h2>
+          <p>A System for Redirected Grabbing and Touching in Virtual Reality</p>
         </div>
-        <nav>
-          <a class="button primary" href="index.html">ENG</a>
-          <a class="button" href="ger.html">GER</a>
-          <a class="button" href="#menu">Menu</a>
-        </nav>
       </header>
 
-      <!-- Menu -->
-      <nav id="menu">
+      <!-- Content -->
+      <div class="wrapper">
         <div class="inner">
-          <h2>Menu</h2>
-          <ul class="links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-          </ul>
-          <a href="#" class="close">Close</a>
-        </div>
-      </nav>
-
-      <!-- Wrapper -->
-      <section id="wrapper">
-        <header>
-          <div class="inner">
-            <h2>ReGraT</h2>
-            <p>A System for Redirected Grabbing and Touching in Virtual Reality</p>
-          </div>
-        </header>
-
-        <!-- Content -->
-        <div class="wrapper">
-          <div class="inner">
-            <section>
-              <div class="icontainer">
-                <iframe class="responsive" src="https://www.youtube-nocookie.com/embed/nXmiilY0ESg?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </section>
-          </div>
-          <button onclick="topFunction()" class="button small totop">Back To Top</button>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <section id="footer">
-        <div class="inner">
-          <h2 class="major">Get in touch</h2>
-          <form method="post" action="#">
-            <div class="fields">
-              <div class="field">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" />
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" />
-              </div>
-              <div class="field">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="4"></textarea>
+          <section>
+            <h3 class="major">Premise</h3>
+            <p>
+              A key missing part of Virtual Reality is grabbing with haptic feedback. In the real world we explore
+              things by taking them into our hands. We rotate them, bring them closer to our face. As a university
+              project we created ReGraT. In a team of two we explored the use of motion tracking and a 3D printed custom
+              controller to simulate haptic feedback. For the project two major algorithms were developed. A skeleton
+              solver and a redirection algorithm. The skeleton solver creates a virtual representation of the hand from
+              motion tracking data. To feel a haptic feedback whilst grabbing objects of different size, we redirect the
+              virtual fingers to during the grabbing motion. The player will always touch the same physical controller
+              whereas in the virtual world the hand will be touching objects of different sizes. <br> Let's see how
+              these two algorithms work.
+            </p>
+          </section>
+          <section>
+            <h3 class="major">Skeleton Solver</h3>
+            <p>
+              A skeleton solver is an algorithm that usually takes a set of markers and derives a set of bones to
+              animate from it. This algorithm is typicall applied to a set of markers on a motion capture suit. But for
+              ReGraT we developed our own skeleton solving algorithm for hand bones only.
+            </p>
+            <p>
+              A typical grabbing motion will use the index finger and the thumb on the opposite site. Imagine grabbing a
+              glass of your favourite beverage. The other fingers of the hand will follow the index finger. So solving
+              the index finger and thumb will suffice for an accurate representation of a grab.
+            </p>
+            <div class="box alt">
+              <div class="row gtr-uniform">
+                <span class="image fit showgrad"><img class="gallery single" src="images/regrat-skeleton-solver.webp"
+                    alt="" />Tracking setup with retro reflective
+                  markers</span>
               </div>
             </div>
-            <ul class="actions">
-              <li><input type="submit" value="Send Message" /></li>
-            </ul>
-          </form>
-          <ul class="contact">
-            <li class="icon solid fa-home">Stuttgart, Germany</li>
-            <li class="icon solid fa-envelope"><a href="#">kaithmenken@pm.me</a></li>
-            <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/kaith-menken/">linkedin.com/in/kaith-menken</a></li>
-            <li class="icon brands fa-instagram"><a href="http://instagram.com/k1tesurfen">instagram.com/k1tesurfen</a></li>
-          </ul>
-          <ul class="copyright">
-            <li>&copy; Kaith-Uwe Menken All rights reserved.</li>
-          </ul>
-        </div>
-      </section>
-    </div>
+            <p>
+              To solve the skeleton we use a calibration phase in the beginning. During this phase the user will strike
+              hand poses as shown in the image above. In the pointing pose we can determine the markers for the index
+              finger and the thumb by sorting from left to right. Then we sort for distance of the markers from the
+              center of the back of the hand. This will give us the markers for each finger section. After this
+              calibration phase there is no complex recalculation each frame. Our motion tracking cameras have a
+              framerate of 120 fps, which lets us compare the previously solved markers with the currently unsolved
+              makers of the current frame. Each old marker will be replaced with the closest new marker. This results in
+              a solved skeleton for each frame. For normal and even fast motion this method is robust enough to not
+              loose track of the skeleton structure.
+            </p>
+          </section>
+          <section>
+            <h3 class="major">Redirection</h3>
+            <p>
+              To create real haptic feedback we use a 3D printed controller that sits right at the point where thumb and
+              index finger meet. It is attatched to the back of the hand so it moves with the hand gestures at all
+              times. We cannot change the physical size of the controller to accomodate different sizes of virtual
+              objects. Our solution to this problem was to manipulate the virtual grabbing motion to match the moment of
+              virtual an real touch. We can calculate the distance of the tip of the finger to the physical controller
+              and match this distance in the virtual world no matter how big the virtual object is. For larger virtual
+              objects this can look weird because the hand flips open too wide. We fixed this by reducing the
+              redirection distance the bigger the virtual object gets.
+              </po>
+            <div class="box alt">
+              <div class="row gtr-uniform">
+                <span class="image fit showgrad"><img class="gallery single" src="images/regrat-redirection.svg"
+                    alt="" />Schematics of the redirection process</span>
+              </div>
+          </section>
+          <section>
+            <h3 class="major">The Game</h3>
+            <p>
+              To test our method of recreating haptic feedback in virtual reality we created a small VR game. The player
+              is situated in a futuristic spaceship and is given the task of sorting energy containers of different
+              shapes into the matching receiver.
+            </p>
+            <div class="box alt">
+              <div class="row gtr-uniform">
+                <span class="image fit showgrad"><img class="gallery single" src="images/regrat-sorting-game.webp"
+                    alt="" />
+                  View of the player during a game session.
+                </span>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3 class="major">Limitations and summary video</h3>
+            <p>
+              Due to the fact that the Optitrack motion captuiring system is built to be used for whole body motion we
+              lack precision especially with the number of markers used in such a small space. Additionally we often
+              occlude these markers with our own body parts. A possible solution to this problem could be to transfer
+              the motion of visible markers to temporarily obstructed markers until they are visible again by the
+              tracking cameras. Below you can see a summary video of the ReGraT system.
+            </p>
+            <section>
+              <div class="icontainer">
+                <iframe class="responsive" src="https://www.youtube-nocookie.com/embed/nXmiilY0ESg?autoplay=1"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </section>
+          </section>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/modal.js"></script>
-  </body>
+        </div>
+        <button onclick="topFunction()" class="button small totop">Back To Top</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer">
+      <div class="inner">
+        <h2 class="major">Get in touch</h2>
+        <form method="post" action="#">
+          <div class="fields">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea name="message" id="message" rows="4"></textarea>
+            </div>
+          </div>
+          <ul class="actions">
+            <li><input type="submit" value="Send Message" /></li>
+          </ul>
+        </form>
+        <ul class="contact">
+          <li class="icon solid fa-home">Stuttgart, Germany</li>
+          <li class="icon solid fa-envelope"><a href="#">kaithmenken@pm.me</a></li>
+          <li class="icon brands fa-linkedin"><a
+              href="https://www.linkedin.com/in/kaith-menken/">linkedin.com/in/kaith-menken</a></li>
+          <li class="icon brands fa-instagram"><a href="http://instagram.com/k1tesurfen">instagram.com/k1tesurfen</a>
+          </li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; Kaith-Uwe Menken All rights reserved.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/modal.js"></script>
+</body>
+
 </html>
