@@ -2796,11 +2796,11 @@ article.special {
 }
 
 .features img {
-	filter: sepia(30%);
+	filter: hue-rotate(-10deg);
 }
 
 .spotlight img {
-	filter: sepia(30%);
+	filter: hue-rotate(-10deg);
 }
 
 /* Form */
