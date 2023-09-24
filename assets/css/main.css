@@ -317,6 +317,15 @@
 }
 
 
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: #20222d;
+}
+
+::selection {
+  color: white;
+  background: #20222d;
+}
 
 
 html,
@@ -613,7 +622,6 @@ ul {
 
 .scenario {
 	width: 85%;
-	margin-left: auto;
 	margin-right: auto;
 }
 
@@ -767,7 +775,6 @@ textarea {
 	textarea {
 		font-size: 12pt;
 	}
-
 }
 
 @media screen and (max-width: 480px) {
@@ -3359,9 +3366,20 @@ input[type="radio"]+label:before {
 	display: block;
 }
 
+
+
 .image.left,
 .image.right {
 	max-width: 40%;
+}
+
+
+@media screen and (max-width:740px){
+	.image.left,
+	.image.right {
+		max-width: 100%;
+	}
+	
 }
 
 .image.left.cropped,
