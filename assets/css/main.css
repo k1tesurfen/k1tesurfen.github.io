@@ -317,14 +317,15 @@
 }
 
 
-::-moz-selection { /* Code for Firefox */
-  color: white;
-  background: #20222d;
+::-moz-selection {
+	/* Code for Firefox */
+	color: white;
+	background: #20222d;
 }
 
 ::selection {
-  color: white;
-  background: #20222d;
+	color: white;
+	background: #20222d;
 }
 
 
@@ -536,6 +537,20 @@ video {
 }
 
 
+/*game of life*/
+
+#gol-panel {
+	overflow: auto;
+	resize: vertical;
+	height: 389px;
+	width: 100%;
+	border-radius: 5px;
+}
+
+#gol-panel iframe {
+	background-color: #1D1F29;
+	border-radius: 5px;
+}
 
 /*Embedded Videos*/
 Iframe {
@@ -3374,12 +3389,13 @@ input[type="radio"]+label:before {
 }
 
 
-@media screen and (max-width:740px){
+@media screen and (max-width:740px) {
+
 	.image.left,
 	.image.right {
 		max-width: 100%;
 	}
-	
+
 }
 
 .image.left.cropped,

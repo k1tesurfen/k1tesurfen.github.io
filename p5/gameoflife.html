@@ -3,10 +3,23 @@
 <header>
     <script src="./p5.min.js"></script>
     <script src="./gameoflife.js"></script>
+    <link rel="stylesheet" href="./gameoflife.css" />
 </header>
 
 <body>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <img src="assets/css/images/dropdown.svg">
+        </button>
+        <div class="menu dropdown-content">
+            <a class="button primary" onclick="randomizeBoard()">start</a>
+            <a class="button primary" onclick="randomizeBoard()">pause</a>
+            <a class="button primary" onclick="randomizeBoard()">reset</a>
+        </div>
+    </div>
+    <div id="gameboard">
 
+    </div>
 </body>
 
 </html>
