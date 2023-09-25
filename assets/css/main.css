@@ -540,7 +540,7 @@ video {
 /*game of life*/
 
 #gol-panel {
-	overflow: auto;
+	overflow: hidden;
 	resize: vertical;
 	height: 389px;
 	width: 100%;
