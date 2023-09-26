@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
-<header>
+  <header>
     <script src="./p5.min.js"></script>
     <script src="./gameoflife.js"></script>
     <link rel="stylesheet" href="./gameoflife.css" />
-</header>
+  </header>
 
-<body>
+  <body>
     <div class="dropdown">
-        <div class="dropbtn">
-            <img src="../assets/css/images/dropdown.svg">
-        </div>
-        <div class="dropdown-content">
-            <a class="button primary" onclick="startGame()">start</a>
-            <a class="button primary" onclick="pauseGame()">pause</a>
-            <a class="button primary" onclick="clearBoard()">clear</a>
-            <a class="button primary" onclick="randomizeBoard()">random</a>
-        </div>
+      <div class="dropbtn">
+        <img src="../assets/css/images/dropdown.svg" />
+      </div>
+      <div class="dropdown-content">
+        <a class="button primary" onclick="startGame()">start</a>
+        <a class="button primary" onclick="pauseGame()">pause</a>
+        <a class="button primary" onclick="clearBoard()">clear</a>
+        <a class="button primary" onclick="randomizeBoard()">random</a>
+      </div>
     </div>
-    <div id="gameboard">
-
-    </div>
-</body>
-
+    <div id="gameboard"></div>
+  </body>
 </html>
