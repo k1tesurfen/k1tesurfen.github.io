@@ -11,7 +11,7 @@ var captionText = document.getElementById("caption");
 for (var i = 0; i < images.length; i++) {
   var img = images[i];
   // and attach our click listener for this image.
-  img.onclick = function(evt) {
+  img.onclick = function (evt) {
     modal.style.display = "block";
     modalImg.src = this.src;
     captionText.innerHTML = "<p>" + this.alt + "<i> - Click anywhere to close</i></p>";
@@ -20,11 +20,11 @@ for (var i = 0; i < images.length; i++) {
 
 var span = document.getElementsByClassName("close")[0];
 
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
 }
 
-function topFunction(){
+function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

@@ -536,6 +536,78 @@ video {
 	margin: 0 0 0.5em 0;
 }
 
+/* general hover display */
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropbtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+}
+
+
+.dropbtn:hover+.dropdown-content {
+	display: flex;
+}
+
+/* gol explanation hover display */
+.gol-infopoint {
+	width: 100%;
+	display: flex;
+	vertical-align: baseline;
+}
+
+.gol-infopoint h3 {
+	display: inline-block;
+}
+
+.gol-infopoint h3 a:hover {
+	content: "wikipedia.org";
+}
+
+.gol-infopoint-btn {
+	margin-left: 10px;
+	background-color: rgba(53, 60, 84, 0.3);
+	width: 20px;
+	height: 20px;
+}
+
+.gol-infopoint-btn img {
+	height: 100%;
+	opacity: 0.8;
+}
+
+.gol-infopoint-dropdown {
+	height: 20px;
+}
+
+.gol-infopoint-content {
+	padding: 20px;
+	margin-top: 30px;
+	background-color: rgba(53, 60, 84, 0.9);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.gol-infopoint-content a {
+	margin: 5px;
+	text-decoration: none;
+	display: block;
+}
+
+.gol-infopoint:hover .gol-infopoint-dropbtn {
+	background-color: hsla(226, 13%, 75%, 0.3);
+}
+
 
 /*game of life*/
 
