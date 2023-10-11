@@ -4,6 +4,7 @@
 */
 
 /*
+	This file is based on:
 	Solid State by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
@@ -616,7 +617,7 @@ video {
 
 /*game of life*/
 
-#gol-panel {
+#p5-panel {
 	overflow: hidden;
 	resize: vertical;
 	height: 389px;
@@ -624,7 +625,7 @@ video {
 	border-radius: 5px;
 }
 
-#gol-panel iframe {
+#p5-panel iframe {
 	background-color: #1D1F29;
 	background-color: var(--background-dark-1);
 	border-radius: 5px;
