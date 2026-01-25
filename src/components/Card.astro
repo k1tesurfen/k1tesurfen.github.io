@@ -22,8 +22,10 @@ const {
     padding: 0;
     border-radius: 0.3rem;
     width: 20rem;
+    height: fit-content;
     text-align: center;
     border: 2px solid var(--color-light);
+    align-self: center;
   }
 
   .icon-wrapper{
@@ -72,7 +74,7 @@ const {
 
   {headline && <h2>{headline}</h2>}
 
-  {text && <p>{text}</p>}
+  {text && <p set:html={text} />}
 
   {linkHref && (
     <a class="button" href={linkHref}>
