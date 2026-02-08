@@ -1,0 +1,302 @@
+---
+// src/components/Search.astro
+---
+
+<div id="search-modal" class="hidden">
+  <div class="search-container">
+    <div class="input-wrapper">
+      <span class="prompt">root@search:~$</span>
+      <input type="text" id="search-input" placeholder="grep -r 'search_term' ." autocomplete="off" />
+      <button id="close-search-btn" type="button">✕</button>
+    </div>
+    
+    <div id="search-status">waiting for input...</div>
+    <ul id="search-results"></ul>
+    
+    <div class="search-footer">
+      <span>[ESC] close</span>
+      <span>[↑/↓] navigate</span>
+      <span>[ENTER] jump to</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Fuse from 'fuse.js';
+
+  let fuseInstance;
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('search-input');
+  const closeBtn = document.getElementById('close-search-btn');
+  const resultsList = document.getElementById('search-results');
+  const statusMsg = document.getElementById('search-status');
+
+  // --- OPEN / CLOSE ---
+  function openSearch() {
+    modal.classList.remove('hidden');
+    input.focus();
+    if (!fuseInstance) initializeFuse();
+  }
+
+  function closeSearch() {
+    modal.classList.add('hidden');
+    input.value = '';
+    resultsList.innerHTML = '';
+    statusMsg.textContent = "waiting for input...";
+  }
+
+  // --- NAVIGATION & SCROLLING ---
+  function jumpToArticle(slug) {
+    const targetElement = document.getElementById(slug);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ 
+        behavior: 'auto',
+        block: 'start'
+      });
+
+      closeSearch();
+    } else {
+      console.warn(`Article with ID #${slug} not found on this page.`);
+    }
+  }
+
+  // --- EVENT LISTENERS ---
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      modal.classList.contains('hidden') ? openSearch() : closeSearch();
+    }
+    if (e.key === 'Escape') closeSearch();
+  });
+
+  closeBtn.addEventListener('click', closeSearch);
+
+  // Close if clicking strictly outside the search box
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeSearch();
+  });
+
+  // Handle [ENTER] on the input box
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      // Select the first result if available
+      const firstLink = resultsList.querySelector('a');
+      if (firstLink) {
+        // Extract slug from the data attribute we added
+        const slug = firstLink.dataset.slug;
+        jumpToArticle(slug);
+      }
+    }
+  });
+
+  // --- FUSE LOGIC ---
+  async function initializeFuse() {
+    statusMsg.textContent = "downloading index...";
+    try {
+      const res = await fetch('/search-index.json');
+      if (!res.ok) throw new Error('Index failed');
+      const data = await res.json();
+      
+      fuseInstance = new Fuse(data, {
+        keys: ['title', 'content'],
+        includeMatches: true,
+        minMatchCharLength: 2,
+        threshold: 0.4,
+      });
+      statusMsg.textContent = "index loaded.";
+    } catch (err) {
+      console.error(err);
+      statusMsg.textContent = "error loading index";
+    }
+  }
+
+  input.addEventListener('input', (e) => {
+    if (!fuseInstance) return;
+    const query = e.target.value;
+    const results = fuseInstance.search(query);
+    
+    statusMsg.textContent = `${results.length} results found`;
+    resultsList.innerHTML = '';
+
+    if (results.length === 0 && query.length > 0) {
+      resultsList.innerHTML = `<li class="no-results">No matches.</li>`;
+      return;
+    }
+
+    results.slice(0, 5).forEach((result) => {
+      const item = result.item;
+      // Snippet logic
+      let snippet = item.content.substring(0, 50) + "...";
+      // Try to find the exact match snippet
+      if (result.matches && result.matches.length > 0) {
+        const match = result.matches.find(m => m.key === 'content');
+        if (match) {
+          const start = Math.max(0, match.indices[0][0] - 10);
+          const end = Math.min(item.content.length, match.indices[0][1] + 20);
+          snippet = "..." + item.content.substring(start, end) + "...";
+        }
+      }
+
+      const li = document.createElement('li');
+      // We use a button-like anchor with a click handler
+      const a = document.createElement('a');
+      a.href = `#${item.slug}`;
+      a.dataset.slug = item.slug; // Store slug for easy access
+      a.innerHTML = `
+        <div class="res-title">${item.title}</div>
+        <div class="res-snippet">${snippet}</div>
+      `;
+      
+      // Intercept Click
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault(); // Stop URL change
+        jumpToArticle(item.slug);
+      });
+
+      li.appendChild(a);
+      resultsList.appendChild(li);
+    });
+  });
+</script>
+
+<style>
+  /* --- VISUAL UPDATES --- */
+
+  .hidden {
+    display: none !important;
+  }
+
+  #search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    
+    /* 1. Remove background color/blur */
+    background: transparent; 
+    backdrop-filter: none;
+    
+    /* 2. Position flex container to the top */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns to top */
+    padding-top: 5vh;        /* Small gap from top edge */
+  }
+
+  /* Ensure clicks pass through the empty space around the search box */
+  /* Note: If you want to click articles BEHIND the search, 
+     use pointer-events: none on #search-modal 
+     and pointer-events: auto on .search-container */
+
+  .search-container {
+    width: 90%;
+    max-width: 600px;
+    background: #0a0a0a; /* Dark background for the box itself */
+    border: 1px solid #333;
+    border-radius: 6px;
+    /* High contrast shadow to make it pop over content */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8); 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: #000;
+    border-bottom: 1px solid #222;
+  }
+
+  .prompt {
+    color: var(--color-accent, #4ade80);
+    font-family: monospace;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    user-select: none;
+  }
+
+  #search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  #close-search-btn {
+    background: none; 
+    border: none; 
+    color: #555; 
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  #search-status {
+    font-size: 0.7rem;
+    color: #444;
+    padding: 4px 1rem;
+    border-bottom: 1px dashed #222;
+    font-family: monospace;
+    background: #050505;
+  }
+
+  #search-results {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 50vh; /* Don't cover the whole screen */
+    overflow-y: auto;
+  }
+
+  #search-results li a {
+    display: block;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid #1a1a1a;
+    cursor: pointer;
+  }
+
+  #search-results li a:hover {
+    background: #151515;
+  }
+
+  .res-title {
+    color: #eee;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 0.9rem;
+  }
+
+  .res-snippet {
+    color: #777;
+    font-size: 0.8rem;
+    font-family: monospace;
+    margin-top: 2px;
+  }
+  
+  .no-results {
+    padding: 1rem;
+    color: #555;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .search-footer {
+    padding: 0.5rem 1rem;
+    background: #000;
+    border-top: 1px solid #222;
+    color: #444;
+    font-size: 0.7rem;
+    font-family: monospace;
+    display: flex;
+    gap: 1rem;
+  }
+</style>

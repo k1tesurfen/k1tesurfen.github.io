@@ -1,6 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
+import BlogArticle from "../components/BlogArticle.astro";
+import { getCollection } from "astro:content";
+
+// 1. Fetch and Sort
+const allPosts = await getCollection("blog");
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+);
+
+const postsToRender = await Promise.all(sortedPosts.map(async (post, index) => {
+  const { Content } = await post.render(); // This turns Markdown into a Component
+  const nextPost = sortedPosts[index + 1];
+  
+  return {
+    id: post.slug,
+    title: post.data.title,
+    date: post.data.date, // Make sure your config.ts defines this as string or Date
+    nextId: nextPost ? nextPost.slug : null,
+    branch: post.data.branch,
+    Content: Content
+  };
+}));
+// Your SVG constant
 const k1te = `<svg width="100%" height="100%" viewBox="0 0 3000 1302" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill: currentColor;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(12.407972,0,0,12.407972,-10641.430715,-2069.830825)">
         <path d="M978.519,250.57L1001.62,267.84L988.414,221.858C988.414,221.858 1022.863,217.768 1031.589,216.404C1040.315,215.041 1058.312,208.315 1062.493,205.86C1066.674,203.406 1069.128,206.769 1072.946,207.86C1076.763,208.951 1082.49,207.951 1082.49,207.951C1082.49,207.951 1078.696,204.024 1079.52,204.335C1083.354,205.784 1091.852,205.315 1091.852,205.315L1081.944,199.134C1081.944,199.134 1086.285,199.74 1089.366,199.834C1092.978,199.945 1097.307,198.952 1096.781,198.931C1096.781,198.931 1083.261,192.816 1083.944,192.863C1091.556,193.386 1094.781,192.036 1094.781,192.036C1094.781,192.036 1053.897,175.157 1024.368,174.372C1018.295,174.211 1015.153,179.733 1002.464,182.06C998.258,182.832 986.641,183.04 986.641,183.04C986.641,183.04 985.662,178.594 984.079,175.806C982.497,173.018 978.519,169.754 978.519,169.754C978.519,169.754 974.54,173.018 972.958,175.806C971.375,178.594 970.396,183.04 970.396,183.04C970.396,183.04 958.779,182.832 954.573,182.06C941.885,179.733 938.742,174.211 932.669,174.372C903.14,175.157 862.256,192.036 862.256,192.036C862.256,192.036 865.481,193.386 873.093,192.863C873.777,192.816 860.256,198.931 860.256,198.931C859.73,198.952 864.059,199.945 867.671,199.834C870.753,199.74 875.093,199.134 875.093,199.134L865.185,205.315C865.185,205.315 872.076,206.855 875.911,205.406C876.735,205.095 874.548,207.951 874.548,207.951C874.548,207.951 880.274,208.951 884.091,207.86C887.909,206.769 890.363,203.406 894.544,205.86C898.725,208.315 916.722,215.041 925.448,216.404C934.174,217.768 968.623,221.858 968.623,221.858L955.417,267.84L978.519,250.57Z"/>
@@ -8,13 +31,219 @@ const k1te = `<svg width="100%" height="100%" viewBox="0 0 3000 1302" version="1
 </svg>
 `;
 ---
+
 <BaseLayout title="kaith.de">
-  <Card
-    svgCode={k1te}
-    headline="kaith - k1te - k1tesurfen"
-    text="(/ˈkaɪt/) is the common name for certain birds of prey in the family Accipitridae, particularly in subfamilies Milvinae, Elaninae, and Perninae"
-    linkHref="mailto:hey@kaith.de"
-    linkLabel="hey@kaith.de"
-  />
+  
+  <section class="hero-section">
+    <Card 
+      svgCode={k1te} 
+      headline="kaith - k1te - k1tesurfen" 
+      text="(/ˈkaɪt/) is the common name for certain birds of prey."
+      linkHref="mailto:hey@kaith.de"
+      linkLabel="hey@kaith.de"
+    />
+  </section>
+  <div class="instructions">
+    <span>CMD+K to search</span>
+  </div>
+  <div class="sort-header">
+    <div class="cli-line-1">
+      <div class="left">
+        <span class="prompt">~/blog</span>
+        <span class="git">main</span>
+      </div>
+      <div class="spacer-line"></div>
+      <div class="status-pill">
+        <span id="sort-status-text">sorted</span>
+      </div>
+    </div>
+    
+    <div class="cli-line-2">
+      <span class="command-wrapper">
+        <button id="sort-btn" class="cmd-btn">ls -t</button>
+      </span>
+      <span class="comment" id="sort-comment"># click to sort: newest first</span>
+    </div>
+  </div>
+  <section class="blog-stream">
+    {/* 3. Now map synchronously over the prepared data */}
+    {postsToRender.map((item) => (
+      <div class="article-wrapper">
+        <BlogArticle 
+          id={item.id} 
+          title={item.title}
+          date={item.date.toISOString().slice(0, 10)}
+          nextId={item.nextId}
+          branch={item.branch}
+        >
+          {/* Render the component we prepared earlier */}
+          <item.Content />
+        </BlogArticle>
+      </div>
+    ))}
+  </section>
 
 </BaseLayout>
+<script>
+  const sortBtn = document.getElementById('sort-btn');
+  const sortComment = document.getElementById('sort-comment');
+  const stream = document.querySelector('.blog-stream');
+  
+  // Track state: default is Newest First (ls -t)
+  let isAscending = false; 
+
+  if(sortBtn && stream) {
+    sortBtn.addEventListener('click', () => {
+      isAscending = !isAscending;
+
+      // 1. Update Command Text
+      sortBtn.textContent = isAscending ? 'ls -tr' : 'ls -t';
+      
+      // 2. Update Comment Text (The "Help" message)
+      sortComment.textContent = isAscending 
+        ? '# click to sort: oldest first' 
+        : '# click to sort: newest first';
+
+      // 3. Reorder DOM
+      const articles = Array.from(stream.children);
+      articles.reverse().forEach(article => stream.appendChild(article));
+    });
+  }
+</script>
+<style>
+  .instructions{
+    font-size: 0.9rem;
+    position: fixed;
+    bottom: 0.2rem;
+    left: 0.4rem;
+    color: #c9c9c9;
+    opacity: 0.4;
+  }
+  /* --- Sort Header Container --- */
+  .sort-header {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 3rem auto; /* Spacing above articles */
+    padding: 0 1rem;
+    font-family: var(--font-mono);
+  }
+
+  /* --- Line 1: The Prompt Pills (Reused from your design) --- */
+  .cli-line-1 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .left {
+    background-color: rgb(193 193 193);
+    border-radius: 69px;
+    padding-right: 1.4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .prompt {
+    background-color: rgb(107, 107, 107);
+    color: #fff;
+    padding: 0.2rem 1.4rem;
+    border-radius: 69px;
+    margin-right: 0.5rem;
+  }
+
+  .git {
+    color: #161616;
+    font-weight: bold;
+  }
+
+  .spacer-line {
+    flex-grow: 1;
+    height: 1px; /* Center alignment adjustment */
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.3);
+    margin: 0 1rem;
+  }
+
+  /* Right side status pill */
+  .status-pill {
+    background-color: rgb(107, 107, 107);
+    color: #fff;
+    padding: 0.2rem 1.4rem;
+    border-radius: 69px;
+    font-size: 0.9rem;
+  }
+
+  .cli-line-2 {
+    padding-left: 1rem; /* Indent to match folder hierarchy look */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cmd-btn {
+    background: transparent;
+    border: none;
+    color: #eecf75; /* Your command yellow */
+    font-family: inherit;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+  }
+
+  .cmd-btn:hover {
+    text-decoration: underline;
+  }
+
+  .comment {
+    color: #666;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    font-style: italic;
+  }
+
+  .cursor {
+    color: #eecf75;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  /* Forces the hero section to fill the screen exactly */
+  .hero-section {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    position: relative;
+    /* Optional: snap behavior if you want it strict */
+    scroll-snap-align: start;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    text-align: center;
+    opacity: 0.5;
+    animation: bounce 2s infinite;
+  }
+  
+  .scroll-indicator p {
+    font-size: 0.8rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Container for the articles */
+  .blog-stream {
+    width: 100%;
+    padding-bottom: 5rem;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+  }
+</style>

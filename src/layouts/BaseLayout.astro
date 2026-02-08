@@ -1,4 +1,6 @@
 ---
+
+import Search from "../components/Search.astro";
 const { title = "Portfolio" } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -14,10 +16,11 @@ const { title = "Portfolio" } = Astro.props;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <style is:global>
+      /* --- Fonts --- */
       @font-face {
         font-family: 'Geist Mono';
         src: url('/fonts/GeistMono[wght].woff2') format('woff2-variations');
-        font-weight: 100 900; /* This tells the browser it's a variable range */
+        font-weight: 100 900;
         font-display: swap;
         font-style: normal;
       }
@@ -25,22 +28,42 @@ const { title = "Portfolio" } = Astro.props;
         font-family: 'Stalinist One';
         src: url('/fonts/stalinist-one-v58-latin-regular.woff2') format('woff2');
       }
+      @font-face {
+        font-family: 'Geist';
+        src: url('/fonts/Geist[wght].woff2') format('woff2-variations');
+        font-weight: 100 900;
+        font-display: swap;
+        font-style: normal;
+      }
 
+      /* --- Variables --- */
       :root {
         --font-mono: 'Geist Mono', monospace;
-        --font-headline: 'Stalinist One';
-        --color-dark: #161616;
+        --font-headline: 'Geist Mono', monospace;
+        --font-text: 'Geist';
+        --color-dark: rgb(22 22 22);
         --color-light: oklch(0.9814 0.02 64.9);
+        --color-accent: oklch(0.85 0.15 140); /* Added a slight green/lime for CLI vibes */
+        --spacing-md: 2rem;
       }
+
+      /* --- Base Styles --- */
+      html {
+        scroll-behavior: smooth; /* Essential for the 'next article' scroll */
+      }
+      
       body {
         font-family: var(--font-mono);
         margin: 0;
         min-height: 100vh;
-        display: grid;
-        place-items: center;
         background: var(--color-dark);
         color: var(--color-light);
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
       }
+
+      /* Noise Overlay */
       body::before{
         content: "";
         background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
@@ -48,32 +71,100 @@ const { title = "Portfolio" } = Astro.props;
         width: 100%;
         height: 100vh;
         top: 0;
-        opacity: 0.1;
+        left: 0;
+        opacity: 0.07;
         pointer-events: none;
+        z-index: 999;
       }
 
+      /* --- Layout --- */
       main {
-        display: grid;
-        gap: 2rem;
-        height:100vh;
+        font-family: var(--font-text);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
       }
-      footer{
+
+      footer {
+        padding: 4rem 1rem;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        border-top: 1px dashed rgba(255,255,255,0.1);
+        margin-top: auto;
       }
-      footer a{
+
+      footer a, footer a:visited {
         color: var(--color-light);
+        text-decoration: underline;
+        text-underline-offset: 4px;
       }
-      footer a:visited{
-        color: var(--color-light);
+
+      /* --- Global CLI/Code Styles --- */
+      code {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+      }
+      pre {
+        background: #000 !important;
+        border: 1px solid #333;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+      /* BaseLayout.astro -> <style is:global> */
+
+      /* The Code Block Container */
+      pre {
+        background-color: #0d0d0d !important; /* Almost black */
+        border: 1px solid #333;
+        border-radius: 6px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      }
+
+      /* Optional: "TERMINAL" label at top right of every code block */
+      pre::before {
+        content: "bash"; /* Or simply "terminal" */
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #333;
+        color: #aaa;
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-bottom-left-radius: 4px;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+      }
+
+      /* The Code Text */
+      code {
+        font-family: 'Geist Mono', monospace;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* Inline code (e.g. `npm install`) */
+      p code, li code {
+        background: #222;
+        color: #4ade80; /* Matrix Green */
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+        border: 1px solid #444;
       }
     </style>
   </head>
   <body>
     <main>
+      <Search />
       <slot />
     </main>
     <footer>

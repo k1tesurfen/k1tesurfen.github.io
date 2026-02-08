@@ -1,0 +1,196 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  date: string;
+  nextId?: string;
+  branch: string;
+}
+
+const { id, title, date, nextId, branch } = Astro.props;
+
+const escapedTitle = title.replace(/\s/g, '\\ ');
+---
+
+<article id={id} class="cli-article">
+  <div class="cli-header">
+    <div class="cli-line-1">
+      <div class="left">
+        <span class="prompt">~/blog</span>
+        <span class="git">{branch}</span>
+      </div>
+      <div class="spacer-line"></div>
+      <time datetime={date} class="article-date">{date}</time>
+    </div>
+    <div class="cli-line-2">
+      <span class="command">bat </span><span class="attributes">{escapedTitle}.md</span>
+    </div>
+  </div>
+
+  <div class="cli-meta">
+    <h2 class="article-title">{title}</h2>
+  </div>
+
+  <div class="cli-content">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .cli-article {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 4rem;
+  }
+
+  /* The fake terminal line */
+  .cli-header {
+    font-family: var(--font-mono);
+    color: var(--color-accent, #88ff88);
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    position: relative;
+    opacity: 1;
+    z-index: 9999;
+  }
+  .cli-header::before {
+    content: "";
+    position: absolute;
+    top: 0.6rem;
+    left: 0;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 8px 0 0 8px;
+    color: #767676;
+    height: 1.2rem;
+    width: 1rem;
+  }
+
+  .git{
+    border-radius: 69px;
+    color: #161616;
+  }
+
+  .cli-header time{
+    color: #fff!important;
+    border-radius: 69px;
+    background-color: rgb(107, 107, 107);
+    padding: 0 1.4rem;
+    z-index: 9999;
+  }
+  
+  .cli-line-1{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .cli-line-1 .left{
+    background-color: #eecf75;
+    border-radius: 69px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 1.4rem 0 0;
+  }
+
+  .cli-line-2{
+    width: 100%;
+    padding: 0;
+  }
+  .spacer-line {
+      height: 0.6rem; 
+      flex-grow: 1;
+      margin: 0 auto;
+      border-bottom: 2px dotted rgba(255, 255, 255, 0.3);
+  }
+  .prompt {
+    background-color: rgb(107, 107, 107);
+    outline: 1px solid rgb(107, 107, 107);
+    outline-offset: -1px;
+    margin-right: 0;
+    padding: 0 1.4rem;
+    border-radius: 69px;
+  }
+  .command {
+    margin-left: 1rem;
+    color: #eecf75;
+  }
+  .attributes {
+    color: #d4be98;
+  }
+
+  /* Title and Date row */
+  .cli-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .article-title {
+    font-family: var(--font-headline);
+    font-size: 2rem;
+    margin: 0.8rem 0;
+    line-height: 2;
+    text-transform: uppercase;
+  }
+
+  .cli-content {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Button Styling */
+  .cli-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .next-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--color-light);
+    color: var(--color-light);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+
+  .next-btn:hover {
+    background: var(--color-light);
+    color: var(--color-dark);
+    box-shadow: 4px 4px 0 rgba(255,255,255,0.2);
+  }
+
+  .end-msg {
+    opacity: 0.4;
+  }
+
+  /* Blinking cursor effect */
+  .blink {
+    animation: blinker 1s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% { opacity: 0; }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .cli-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>
